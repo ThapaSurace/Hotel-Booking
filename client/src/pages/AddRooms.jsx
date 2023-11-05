@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import { roomInputs } from "../formSource";
 import axios from "axios";
 import NavBar from "../components/NavBar";
+import { BASE_URL } from "../utils/url";
 
 const AddRooms = () => {
   const [info, setInfo] = useState({});
@@ -10,7 +11,7 @@ const AddRooms = () => {
   const [rooms, setRooms] = useState([]);
   const [isLoading,setIsLoading] = useState(false)
 
-  const { data, loading } = useFetch("http://localhost:4000/api/hotels");
+  const { data, loading } = useFetch(`${BASE_URL}/api/hotels`);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -21,7 +22,7 @@ const AddRooms = () => {
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     setIsLoading(true)
     try {
-      await axios.post(`http://localhost:4000/api/rooms/${hotelId}`, {
+      await axios.post(`${BASE_URL}/api/rooms/${hotelId}`, {
         ...info,
         roomNumbers,
       });

@@ -5,6 +5,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import { BASE_URL } from '../utils/url';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);

@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { BASE_URL } from "../utils/url";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Login = () => {
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 dispatch({ type: "LOGIN_START" });
                 try {
-                  const res = await axios.post("http://localhost:4000/api/auth/login", values);
+                  const res = await axios.post(`${BASE_URL}/api/auth/login`, values);
                   dispatch({
                     type: "LOGIN_SUCCESS",
                     payload: res.data.details,

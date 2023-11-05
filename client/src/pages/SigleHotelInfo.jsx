@@ -15,6 +15,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { SearchContext } from "../context/SearchContext";
 import { AuthContext } from "../context/AuthContext";
 import HotelReserve from "../components/HotelReserve";
+import { BASE_URL } from "../utils/url";
 
 const SigleHotelInfo = () => {
   const [slideNumber, setSlideNumber] = useState(0);
@@ -27,7 +28,7 @@ const SigleHotelInfo = () => {
   const { user } = useContext(AuthContext);
   const { dates, options } = useContext(SearchContext);
 
-  const { data } = useFetch(`http://localhost:4000/api/hotels/find/${id}`);
+  const { data } = useFetch(`${BASE_URL}/api/hotels/find/${id}`);
 
   const handleOpen = (i) => {
     setSlideNumber(i);

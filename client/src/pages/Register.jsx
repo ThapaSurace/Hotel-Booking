@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/url";
 
 const Register = () => {
   const navigate = useNavigate()
@@ -41,7 +42,7 @@ const Register = () => {
               onSubmit={ async (values, { setSubmitting, resetForm }) => {
                 setSubmitting(false)
                 try {
-                  const response = await axios.post("http://localhost:4000/api/auth/register", values);
+                  const response = await axios.post(`${BASE_URL}/api/auth/register`, values);
                   console.log("Registration successful:", response.data);
                   // Handle the successful registration response
                 } catch (error) {

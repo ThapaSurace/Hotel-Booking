@@ -4,13 +4,14 @@ import axios from "axios";
 import useFetch from "../hooks/useFetch";
 import NavBar from "../components/NavBar";
 import { BsFillCloudUploadFill } from "react-icons/bs";
+import { BASE_URL } from "../utils/url";
 
 const AddProperty = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("http://localhost:4000/api/rooms");
+  const { data, loading, error } = useFetch(`${BASE_URL}/api/rooms`);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

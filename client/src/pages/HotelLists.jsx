@@ -8,6 +8,7 @@ import { DateRange } from "react-date-range";
 import SearchItemCard from '../components/SearchItemCard';
 import Footer from '../components/Footer';
 import useFetch from '../hooks/useFetch';
+import { BASE_URL } from '../utils/url';
 
 
 const HotelLists = () => {
@@ -16,7 +17,7 @@ const HotelLists = () => {
   const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
-  const {loading,data,error} = useFetch("http://localhost:4000/api/hotels")
+  const {loading,data,error} = useFetch(`${BASE_URL}/api/hotels`)
 
   console.log(data)
 
