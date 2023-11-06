@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
 
-const PORT = 4000
+const PORT = process.env.PORT || 5000
 
 const app = express();
 dotenv.config();
